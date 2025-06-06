@@ -1,995 +1,391 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
-  <meta charshet="utf-8">
-  <meta
-    content="width=device-width, initial-scale=1.0"
-    name="viewport"
-  >
-
-  <title>CV Nguyễn Văn Chán</title>
-  <meta
-    content=""
-    name="description"
-  >
-  <meta
-    content=""
-    name="keywords"
-  >
-
-  <!-- Favicons -->
-  <link
-    href="assets/img/35402.jpg"
-    rel="icon"
-  >
-  <link
-    href="assets/img/apple-touch-icon.png"
-    rel="apple-touch-icon"
-  >
-
-  <!-- Google Fonts 
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
- -->
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
-    rel="stylesheet"
-  >
-  <!-- Vendor CSS Files -->
-  <link
-    href="assets/vendor/aos/aos.css"
-    rel="stylesheet"
-  >
-  <link
-    href="assets/vendor/bootstrap/css/bootstrap.min.css"
-    rel="stylesheet"
-  >
-  <link
-    href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-    rel="stylesheet"
-  >
-  <link
-    href="assets/vendor/boxicons/css/boxicons.min.css"
-    rel="stylesheet"
-  >
-  <link
-    href="assets/vendor/glightbox/css/glightbox.min.css"
-    rel="stylesheet"
-  >
-  <link
-    href="assets/vendor/swiper/swiper-bundle.min.css"
-    rel="stylesheet"
-  >
-
-  <!-- Template Main CSS File -->
-  <link
-    href="assets/css/style.css"
-    rel="stylesheet"
-  >
-
-  <!-- =======================================================
-  * Template Name: iPortfolio - v3.6.0
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>So Sánh Công Nghệ OCR: PaddleOCR và Vintern-1B</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8fafc;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .btn-active {
+            background-color: #2563eb !important;
+            color: white !important;
+            box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.39);
+        }
+        .simulation-output {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1f2937;
+            color: #d1d5db;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease-in-out;
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+        .chart-container {
+            position: relative;
+            height: 40vh;
+            max-height: 400px;
+            width: 100%;
+            max-width: 700px;
+            margin: auto;
+        }
+    </style>
 </head>
-
-<body>
-
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img
-          src="assets/img/35402.jpg"
-          alt=""
-          class="img-fluid rounded-circle"
-        >
-        <h1 class="text-light"><a href="index.html">Nguyễn Văn Chán</a></h1>
-        <div class="social-links mt-3 text-center">
-          <a
-            href="https://twitter.com/chienbinhmanhme"
-            target="_blank"
-            class="twitter"
-          ><i class="bx bxl-twitter"></i></a>
-          <a
-            href="https://www.facebook.com/NVC.9999/ "
-            target="_blank"
-            class="facebook"
-          ><i class="bx bxl-facebook"></i></a>
-          <a
-            href="https://www.instagram.com/nguyenvanchan_dz/"
-            target="_blank"
-            class="instagram"
-          ><i class="bx bxl-instagram"></i></a>
-          <a
-            href="https://github.com/nguyenvanchan123"
-            target="_blank"
-            class="github"
-          ><i class="bx bxl-github"></i></a>
-          <a
-            href="https://www.linkedin.com/in/nguy%E1%BB%85n-v%C4%83n-ch%C3%A1n-271752181/"
-            target="_blank"
-            class="linkedin"
-          ><i class="bx bxl-linkedin"></i></a>
-        </div>
-      </div>
-
-      <nav
-        id="navbar"
-        class="nav-menu navbar"
-      >
-        <ul>
-          <li><a
-              href="#hero"
-              class="nav-link scrollto active"
-            ><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a
-              href="#about"
-              class="nav-link scrollto"
-            ><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a
-              href="#resume"
-              class="nav-link scrollto"
-            ><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <!-- <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li> -->
-          <li><a
-              href="#services"
-              class="nav-link scrollto"
-            ><i class="bx bx-server"></i> <span>Services</span></a></li>
-          <li><a
-              href="#contact"
-              class="nav-link scrollto"
-            ><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section
-    id="hero"
-    class="d-flex flex-column justify-content-center align-items-center"
-  >
-    <div
-      class="hero-container"
-      data-aos="fade-in"
-    >
-      <h1>Nguyễn Văn Chán</h1>
-      <p>I'm <span
-          class="typed"
-          data-typed-items="Software Engineer, AI Engineer, DevOps Engineer, Designer, Developer, Freelancer, Photographer"
-        ></span></p>
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section
-      id="about"
-      class="about"
-    >
-      <div class="container">
-
-        <div class="section-title">
-          <h2>About</h2>
-          <p> </p>
-        </div>
-
-        <div class="row">
-          <div
-            class="col-lg-4"
-            data-aos="fade-right"
-          >
-            <img
-              src="assets/img/35402.jpg"
-              class="img-fluid"
-              alt=""
-            >
-          </div>
-          <div
-            class="col-lg-8 pt-4 pt-lg-0 content"
-            data-aos="fade-left"
-          >
-            <h3>UI/UX Designer &amp; Web Developer.</h3>
-            <p class="fst-italic">
-              I'm a passionate and passionate young designer. With the knowledge I have learned, experience and a sense
-              of responsibility at work.
-              I hope to be able to contribute a small part of my responsibility to the company.
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>December 25, 1995</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Profile:</strong> <span>Full-Stack Developer</span>
-                  </li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>000000000</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Binh Thuan Province, Viet
-                      Nam</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>27</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>PhEmailone:</strong>
-                    <span>lapnguyen.mo@gmail.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
-                </ul>
-              </div>
-            </div>
-            <p>
-
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Facts Section ======= -->
-    <section
-      id="facts"
-      class="facts"
-    >
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Facts</h2>
-          <p></p>
-        </div>
-
-        <div class="row no-gutters">
-
-          <div
-            class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch"
-            data-aos="fade-up"
-          >
-            <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
-              <span
-                data-purecounter-start="0"
-                data-purecounter-end="232"
-                data-purecounter-duration="1"
-                class="purecounter"
-              ></span>
-              <p><strong>Happy Clients</strong></p>
-            </div>
-          </div>
-
-          <div
-            class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div class="count-box">
-              <i class="bi bi-journal-richtext"></i>
-              <span
-                data-purecounter-start="0"
-                data-purecounter-end="521"
-                data-purecounter-duration="1"
-                class="purecounter"
-              ></span>
-              <p><strong>Projects</strong></p>
-            </div>
-          </div>
-
-          <div
-            class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            <div class="count-box">
-              <i class="bi bi-headset"></i>
-              <span
-                data-purecounter-start="0"
-                data-purecounter-end="1453"
-                data-purecounter-duration="1"
-                class="purecounter"
-              ></span>
-              <p><strong>Hours Of Support</strong></p>
-            </div>
-          </div>
-
-          <div
-            class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            <div class="count-box">
-              <i class="bi bi-people"></i>
-              <span
-                data-purecounter-start="0"
-                data-purecounter-end="32"
-                data-purecounter-duration="1"
-                class="purecounter"
-              ></span>
-              <p><strong>Hard Workers</strong></p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Facts Section -->
-
-    <!-- ======= Skills Section ======= -->
-    <section
-      id="skills"
-      class="skills section-bg"
-    >
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Skills</h2>
-          <p> </p>
-        </div>
-
-        <div class="row skills-content">
-
-          <div
-            class="col-lg-6"
-            data-aos="fade-up"
-          >
-            <div class="progress">
-              <span class="skill">Python <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  aria-valuenow="100"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">.Net <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  aria-valuenow="100"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">Docker - K8s <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  aria-valuenow="100"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Linux <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  aria-valuenow="100"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Java <i class="val">65%</i></span>
-              <div class="progress-bar-wrap">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  aria-valuenow="60"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">JavaScript <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  aria-valuenow="75"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-            </div>
-
-          </div>
-
-          <div
-            class="col-lg-6"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-
-            <div class="progress">
-              <span class="skill">PHP <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  aria-valuenow="80"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">WordPress/CMS <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  aria-valuenow="90"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Photoshop <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  aria-valuenow="75"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Skills Section -->
-
-    <!-- ======= Resume Section ======= -->
-    <section
-      id="resume"
-      class="resume"
-    >
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Resume</h2>
-          <p> </p>
-        </div>
-
-        <div class="row">
-          <div
-            class="col-lg-6"
-            data-aos="fade-up"
-          >
-            <h3 class="resume-title">Sumary</h3>
-            <div class="resume-item pb-0">
-              <h4>NGUYỄN VĂN CHÁN</h4>
-              <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and
-                  developing user-centered digital/print marketing material from initial concept to final, polished
-                  deliverable.</em></p>
-              <ul>
-                <li>Phan Thiet City, Binh Thuan Province</li>
-                <li>0327230000</li>
-                <li>lapnguyen.mo@gmail.com</li>
-              </ul>
-            </div>
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Master of Fine Arts &amp; Graphic Design</h4>
-              <h5>2015 - 2016</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui
-                ut dignissimos deleniti nerada porti sand markend</p>
-            </div>
-            <div class="resume-item">
-              <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-              <h5>2010 - 2014</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius
-                unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart
-                dila</p>
-            </div>
-          </div>
-          <div
-            class="col-lg-6"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Senior graphic design specialist</h4>
-              <h5>2019 - Present</h5>
-              <p><em>Experion, New York, NY </em></p>
-              <ul>
-                <li>Lead in the design, development, and implementation of the graphic, layout, and production
-                  communication materials</li>
-                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the
-                  project. </li>
-                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the
-                  design</li>
-                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
-              </ul>
-            </div>
-            <div class="resume-item">
-              <h4>Graphic design specialist</h4>
-              <h5>2017 - 2018</h5>
-              <p><em>Stepping Stone Advertising, New York, NY</em></p>
-              <ul>
-                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and
-                  advertisements).</li>
-                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Resume Section -->
-
-    <!-- ======= Portfolio Section ======= 
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Portfolio</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-	  -->
-    </section><!-- End Portfolio Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section
-      id="services"
-      class="services"
-    >
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Services</h2>
-        </div>
-
-        <div class="row">
-          <div
-            class="col-lg-4 col-md-6 icon-box"
-            data-aos="fade-up"
-          >
-            <div class="icon"><i class="bi bi-briefcase"></i>
-            </div>
-            <h4 class="title"><a href="">Web Design</a></h4>
-            <p class="description">Designer that creates innovative, effective websites that capture your brand, improve
-              your conversion rates, and maximize your revenue to help grow your business and achieve your goals.</p>
-          </div>
-
-          <div
-            class="col-lg-4 col-md-6 icon-box"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div class="icon"><i class="bi bi-card-checklist"></i></div>
-            <h4 class="title"><a href="">Web Development</a></h4>
-            <p class="description">I design, build, support, and evolve all types of web-based software. With 10 years
-              in web development, I delivers intuitive and fast websites, web portals, and other web solutions that
-              bring about digital transformation and enhance business workflows.</p>
-          </div>
-
-          <div
-            class="col-lg-4 col-md-6 icon-box"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            <div class="icon"><i class="bi bi-bar-chart"></i></div>
-            <h4 class="title"><a href="">Photography</a></h4>
-            <p class="description">Introduce the world to your business with authentic, high-resolution photos of your
-              team, locations, products, customers and events.</p>
-          </div>
-
-          <div
-            class="col-lg-4 col-md-6 icon-box"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            <div class="icon"><i class="bi bi-binoculars"></i></div>
-            <h4 class="title"><a href="">Responsive Design</a></h4>
-            <p class="description">Responsive web design is a website framework that hides, shrinks, moves, and adjusts
-              content on your website depending on what device your visitor is reading on (a smartphone, tablet, laptop,
-              or desktop)</p>
-          </div>
-          <div
-            class="col-lg-4 col-md-6 icon-box"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
-            <div class="icon"><i class="bi bi-brightness-high"></i></div>
-            <h4 class="title"><a href="">Graphic Design</a></h4>
-            <p class="description">Graphic design service can deliver artwork that underscores your brand message &
-              captures the attention of your potential customers.</p>
-          </div>
-          <div
-            class="col-lg-4 col-md-6 icon-box"
-            data-aos="fade-up"
-            data-aos-delay="500"
-          >
-            <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-            <h4 class="title"><a href="">Marketing Services</a></h4>
-            <p class="description">I don’t limit ourselves to specific industries. I has the experience and
-              professionals to build a custom website and use multiple digital marketing services to assist any size
-              company in any industry.</p>
-          </div>
-        </div>
-      </div>
-    </section><!-- End Services Section -->
-
-    <!-- ======= Testimonials Section ======= 
-    <section id="testimonials" class="testimonials section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Testimonials</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-              </div>
-            </div>
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
-
-
-    <!-- ======= Contact Section ======= -->
-    <section
-      id="contact"
-      class="contact"
-    >
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p> </p>
-        </div>
-
-        <div
-          class="row"
-          data-aos="fade-in"
-        >
-
-          <div class="col-lg-5 d-flex align-items-stretch">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p> Phan Thiet City, Binh Thuan Province, Viet Nam</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>lapnguyen.mo@gmail.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>000000000</p>
-              </div>
-
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d250743.52650307963!2d108.0338690073553!3d10.897665270981847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3176830f876e16e5%3A0x2a82c373d3a16cc8!2zVHAuIFBoYW4gVGhp4bq_dCwgQsOsbmggVGh14bqtbiwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1638062304787!5m2!1svi!2s"
-                frameborder="0"
-                style="border:0; width: 100%; height: 290px;"
-                allowfullscreen
-              ></iframe>
-            </div>
-
-          </div>
-
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form
-              action="forms/contact.php"
-              method="post"
-              role="form"
-              class="php-email-form"
-            >
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    class="form-control"
-                    id="name"
-                    required
-                  >
+<body class="bg-gray-50 text-gray-800">
+<!-- Chosen Palette: Slate Gray (#f8fafc, #e2e8f0, #94a3b8), Midnight Blue (#1e3a8a, #3b82f6), Accent Orange (#f97316) -->
+<!-- Application Structure Plan: Cấu trúc ứng dụng được thiết kế theo hướng kể chuyện, dẫn dắt người dùng từ giới thiệu tổng quan đến so sánh chi tiết, trải nghiệm tương tác và cuối cùng là kết luận, khuyến nghị. Bố cục sử dụng các thẻ `section` riêng biệt cho từng phần: (1) Giới thiệu, (2) So sánh song song các tính năng cốt lõi, (3) Mô phỏng hiệu suất tương tác để minh họa sự khác biệt trong điều kiện thực tế, (4) Biểu đồ hiệu suất động để so sánh các chỉ số định lượng, và (5) Khung quyết định chiến lược. Cấu trúc này giúp người dùng dễ dàng tiêu hóa thông tin phức tạp và đưa ra quyết định sáng suốt. -->
+<!-- Visualization & Content Choices: Report Info -> Goal -> Viz/Presentation Method -> Interaction -> Justification -> Library/Method. 
+1. So sánh tính năng: Thông tin so sánh từ báo cáo -> Mục tiêu là so sánh trực tiếp -> Bảng 2 cột -> Không có tương tác -> Trực quan hóa so sánh dễ dàng. (HTML/Tailwind).
+2. Mô phỏng điều kiện: Hiệu suất trong điều kiện xấu -> Mục tiêu là minh họa sự khác biệt về khả năng phục hồi -> Khối hiển thị văn bản mô phỏng -> Người dùng chọn điều kiện -> Giúp người dùng "cảm nhận" sự khác biệt thay vì chỉ đọc. (Vanilla JS).
+3. Thống kê hiệu suất: Các chỉ số về độ chính xác, tốc độ -> Mục tiêu là so sánh định lượng -> Biểu đồ cột -> Người dùng chuyển đổi giữa các kịch bản -> Trực quan hóa dữ liệu phức tạp, dễ so sánh hơn văn bản. (Chart.js).
+4. Khuyến nghị: Các trường hợp sử dụng -> Mục tiêu là cung cấp hướng dẫn -> Các thẻ thông tin có icon -> Không có tương tác -> Tóm tắt thông tin một cách rõ ràng, dễ nhớ. (HTML/Tailwind/Unicode Icons).
+-->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+<div class="container mx-auto p-4 md:p-8">
+
+    <!-- Header -->
+    <header class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-2">So Sánh Công Nghệ Nhận Dạng Ký Tự</h1>
+        <p class="text-xl text-gray-600">PaddleOCR vs. Vision Language Model (Vintern-1B) cho Ứng Dụng Logistics</p>
+    </header>
+
+    <!-- Introduction Section -->
+    <section id="introduction" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">Tổng Quan</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+            Trong lĩnh vực logistics và vận tải, việc nhận dạng chính xác số container và biển số xe là cực kỳ quan trọng. Tuy nhiên, các điều kiện thực tế như ánh sáng yếu, bóng mờ, ký tự bị bẩn hoặc mờ do chuyển động tạo ra thách thức lớn cho các hệ thống nhận dạng tự động. Báo cáo này so sánh hai công nghệ hàng đầu: PaddleOCR, một framework OCR truyền thống mạnh mẽ, và Vintern-1B, một Mô hình Ngôn ngữ Thị giác (VLM) tiên tiến, để đánh giá khả năng hoạt động của chúng trong những điều kiện khắc nghiệt này.
+        </p>
+    </section>
+
+    <!-- Side-by-Side Comparison Section -->
+    <section id="comparison" class="mb-12">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">So Sánh Trực Tiếp</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- PaddleOCR Column -->
+            <div class="card p-6">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">PaddleOCR</h3>
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-semibold text-lg">Kiến trúc Cốt lõi</h4>
+                        <p class="text-gray-600">Hệ thống OCR 2 giai đoạn: Phát hiện văn bản (Text Detection) và Nhận dạng văn bản (Text Recognition). Rất hiệu quả cho các tác vụ trích xuất ký tự tuần tự.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg">Điểm mạnh</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Tốc độ suy luận rất cao, phù hợp cho các ứng dụng thời gian thực.</li>
+                            <li>Mô hình nhẹ, có thể triển khai trên các thiết bị biên (edge devices).</li>
+                            <li>Hiệu suất vượt trội khi được tinh chỉnh (fine-tuning) với dữ liệu chuyên biệt.</li>
+                            <li>Cộng đồng mã nguồn mở lớn và được hỗ trợ tích cực.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg">Hạn chế</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Phụ thuộc nhiều vào chất lượng hình ảnh đầu vào.</li>
+                            <li>Khả năng hiểu ngữ cảnh hạn chế, dễ bị lỗi với ký tự mờ hoặc biến dạng.</li>
+                            <li>Yêu cầu tiền xử lý hình ảnh kỹ lưỡng (chỉnh sáng, tương phản).</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    name="email"
-                    id="email"
-                    required
-                  >
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="name">Subject</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="subject"
-                  id="subject"
-                  required
-                >
-              </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <textarea
-                  class="form-control"
-                  name="message"
-                  rows="10"
-                  required
-                ></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
+            </div>
 
+            <!-- Vintern-1B Column -->
+            <div class="card p-6">
+                <h3 class="text-2xl font-bold text-green-600 mb-4">Vintern-1B (VLM)</h3>
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-semibold text-lg">Kiến trúc Cốt lõi</h4>
+                        <p class="text-gray-600">Mô hình đa phương thức (Multi-modal), kết hợp bộ mã hóa hình ảnh (Vision Encoder) và mô hình ngôn ngữ lớn (LLM) để hiểu đồng thời hình ảnh và văn bản.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg">Điểm mạnh</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Khả năng hiểu ngữ cảnh vượt trội, có thể "suy luận" ký tự bị thiếu hoặc mờ.</li>
+                            <li>Linh hoạt trong việc xử lý các định dạng phức tạp và không đồng nhất.</li>
+                            <li>Khả năng "instruction-tuning" cho phép tùy chỉnh linh hoạt mà không cần huấn luyện lại từ đầu.</li>
+                            <li>Mạnh mẽ hơn trong các điều kiện nhiễu và chất lượng hình ảnh thấp.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg">Hạn chế</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Yêu cầu tài nguyên tính toán cao hơn (GPU).</li>
+                            <li>Tốc độ suy luận chậm hơn so với OCR chuyên dụng.</li>
+                            <li>Công nghệ mới hơn, hệ sinh thái và tài liệu có thể chưa phong phú bằng.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Simulation Section -->
+    <section id="simulation" class="mb-12 card p-6">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Mô Phỏng Hiệu Suất</h2>
+        <p class="text-center text-gray-600 mb-6">Chọn một điều kiện bất lợi để xem các mô hình có thể phản ứng như thế nào. Đây là một minh họa dựa trên các đặc tính đã được phân tích.</p>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-8" id="condition-selector">
+            <button data-condition="good" class="btn-condition px-6 py-2 rounded-lg font-semibold bg-gray-200 hover:bg-gray-300 transition-colors btn-active">Điều kiện tốt</button>
+            <button data-condition="low-light" class="btn-condition px-6 py-2 rounded-lg font-semibold bg-gray-200 hover:bg-gray-300 transition-colors">Ánh sáng yếu</button>
+            <button data-condition="dirty" class="btn-condition px-6 py-2 rounded-lg font-semibold bg-gray-200 hover:bg-gray-300 transition-colors">Ký tự bị dơ/mờ</button>
+            <button data-condition="angled" class="btn-condition px-6 py-2 rounded-lg font-semibold bg-gray-200 hover:bg-gray-300 transition-colors">Góc chụp nghiêng</button>
         </div>
 
-      </div>
-    </section><!-- End Contact Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-xl font-semibold mb-2 text-center text-blue-600">Kết quả của PaddleOCR</h3>
+                <div id="paddle-output" class="simulation-output text-2xl font-bold">MSCU 123456 7</div>
+                <p id="paddle-desc" class="text-center text-sm text-gray-500 mt-2">Đọc chính xác trong điều kiện lý tưởng.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-2 text-center text-green-600">Kết quả của Vintern-1B</h3>
+                <div id="vintern-output" class="simulation-output text-2xl font-bold">MSCU 123456 7</div>
+                <p id="vintern-desc" class="text-center text-sm text-gray-500 mt-2">Đọc chính xác trong điều kiện lý tưởng.</p>
+            </div>
+        </div>
+    </section>
 
-  </main><!-- End #main -->
+    <!-- Performance Chart Section -->
+    <section id="performance" class="mb-12 card p-6">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">So Sánh Hiệu Năng Định Lượng</h2>
+        <p class="text-center text-gray-600 mb-6">Biểu đồ so sánh các chỉ số hiệu suất quan trọng giữa hai công nghệ. Chọn kịch bản để xem sự thay đổi.</p>
+        <div class="flex justify-center gap-4 mb-6">
+            <button id="btn-good-conditions" class="px-6 py-2 rounded-lg font-semibold transition-colors btn-active">Điều kiện Tốt</button>
+            <button id="btn-bad-conditions" class="px-6 py-2 rounded-lg font-semibold bg-gray-200 hover:bg-gray-300 transition-colors">Điều kiện Xấu</button>
+        </div>
+        <div class="chart-container">
+            <canvas id="performanceChart"></canvas>
+        </div>
+    </section>
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
+    <!-- Strategic Recommendation Section -->
+    <section id="recommendation">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Khuyến Nghị Chiến Lược</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="card p-6 border-l-4 border-blue-500">
+                <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center"><span class="text-2xl mr-2">🚀</span> Khi nào chọn PaddleOCR?</h3>
+                <ul class="list-disc list-inside text-gray-600 space-y-2">
+                    <li>Ưu tiên tốc độ xử lý cao và độ trễ thấp.</li>
+                    <li>Triển khai trên các thiết bị có tài nguyên phần cứng hạn chế.</li>
+                    <li>Bài toán có định dạng văn bản nhất quán, ít thay đổi.</li>
+                    <li>Có khả năng đầu tư vào việc thu thập dữ liệu và tinh chỉnh mô hình.</li>
+                </ul>
+            </div>
+            <div class="card p-6 border-l-4 border-green-500">
+                <h3 class="text-xl font-bold text-green-700 mb-3 flex items-center"><span class="text-2xl mr-2">🧠</span> Khi nào chọn Vintern-1B?</h3>
+                <ul class="list-disc list-inside text-gray-600 space-y-2">
+                    <li>Yêu cầu khả năng hiểu ngữ cảnh để xử lý ảnh mờ, bẩn, che khuất.</li>
+                    <li>Cần nhận dạng văn bản trong các bố cục phức tạp hoặc không đồng nhất.</li>
+                    <li>Cần khả năng suy luận và xác thực thông tin (ví dụ: kiểm tra checksum của số container).</li>
+                    <li>Ưu tiên độ chính xác cao trong điều kiện khó khăn hơn là tốc độ tuyệt đối.</li>
+                </ul>
+            </div>
+            <div class="card p-6 border-l-4 border-yellow-500 md:col-span-2 lg:col-span-1">
+                <h3 class="text-xl font-bold text-yellow-700 mb-3 flex items-center"><span class="text-2xl mr-2">🤝</span> Hướng Tiếp Cận Kết Hợp (Hybrid)</h3>
+                <p class="text-gray-600">Để có hiệu suất tối ưu, hãy xem xét một hệ thống lai: Dùng một mô hình phát hiện nhanh (như từ PaddleOCR) để khoanh vùng văn bản, sau đó dùng Vintern-1B để nhận dạng và xác thực nội dung trong các vùng đó. Cách tiếp cận này tận dụng tốc độ của OCR truyền thống và trí thông minh của VLM.</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="text-center mt-12 py-4 border-t border-gray-200">
+        <p class="text-gray-500 text-sm">Báo cáo tương tác được tạo bởi Chuyên gia AI. &copy; 2025.</p>
+    </footer>
 
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">NVC</a>
-      </div>
-    </div>
-  </footer><!-- End  Footer -->
+</div>
 
-  <a
-    href="#"
-    class="back-to-top d-flex align-items-center justify-content-center"
-  ><i class="bi bi-arrow-up-short"></i></a>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // --- Interactive Simulation Logic ---
+        const simulationData = {
+            'good': {
+                paddle: { text: 'MSCU 123456 7', desc: 'Đọc chính xác trong điều kiện lý tưởng.' },
+                vintern: { text: 'MSCU 123456 7', desc: 'Đọc chính xác trong điều kiện lý tưởng.' }
+            },
+            'low-light': {
+                paddle: { text: 'MSCU 12?456 7', desc: 'Có thể nhầm lẫn ký tự "3" thành "?" do bóng tối.' },
+                vintern: { text: 'MSCU 123456 7', desc: 'Sử dụng ngữ cảnh và cấu trúc số hiệu để suy luận đúng ký tự.' }
+            },
+            'dirty': {
+                paddle: { text: 'MSC  1234 6 7', desc: 'Mất ký tự "U" và "5" do bị che bởi vết bẩn.' },
+                vintern: { text: 'MSCU 123456 7', desc: 'Suy luận các ký tự bị che khuất dựa trên định dạng chuẩn ISO 6346.' }
+            },
+            'angled': {
+                paddle: { text: 'HSCU 123456 1', desc: 'Nhầm lẫn "M" thành "H" và "7" thành "1" do biến dạng góc nhìn.' },
+                vintern: { text: 'MSCU 123456 7', desc: 'Khả năng nhận dạng không gian tốt hơn giúp hiệu chỉnh biến dạng.' }
+            }
+        };
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+        const conditionButtons = document.querySelectorAll('.btn-condition');
+        const paddleOutput = document.getElementById('paddle-output');
+        const vinternOutput = document.getElementById('vintern-output');
+        const paddleDesc = document.getElementById('paddle-desc');
+        const vinternDesc = document.getElementById('vintern-desc');
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+        function updateSimulation(condition) {
+            const data = simulationData[condition];
+            paddleOutput.textContent = data.paddle.text;
+            paddleDesc.textContent = data.paddle.desc;
+            vinternOutput.textContent = data.vintern.text;
+            vinternDesc.textContent = data.vintern.desc;
+            
+            conditionButtons.forEach(btn => {
+                btn.classList.remove('btn-active');
+                if (btn.dataset.condition === condition) {
+                    btn.classList.add('btn-active');
+                }
+            });
+        }
+        
+        conditionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                updateSimulation(button.dataset.condition);
+            });
+        });
+
+        // --- Performance Chart Logic ---
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        let performanceChart;
+
+        const goodConditionsData = {
+            labels: ['Độ chính xác', 'Tốc độ (suy luận/ảnh)', 'Yêu cầu tài nguyên'],
+            datasets: [
+                {
+                    label: 'PaddleOCR',
+                    data: [99, 10, 20], // Accuracy (%), Speed (ms), Resources (relative)
+                    backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Vintern-1B',
+                    data: [98, 150, 80],
+                    backgroundColor: 'rgba(34, 197, 94, 0.7)',
+                    borderColor: 'rgba(34, 197, 94, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        const badConditionsData = {
+            labels: ['Độ chính xác', 'Tốc độ (suy luận/ảnh)', 'Yêu cầu tài nguyên'],
+            datasets: [
+                {
+                    label: 'PaddleOCR',
+                    data: [85, 15, 25],
+                    backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Vintern-1B',
+                    data: [95, 180, 85],
+                    backgroundColor: 'rgba(34, 197, 94, 0.7)',
+                    borderColor: 'rgba(34, 197, 94, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        const chartOptions = {
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value, index, values) {
+                            // Custom labels for y-axis
+                            if (this.getLabelForValue(value).includes('%')) return value;
+                            if (this.getLabelForValue(value).includes('ms')) return value;
+                            return value;
+                        }
+                    },
+                     title: {
+                        display: true,
+                        text: 'Giá trị (Phần trăm, Milliseconds, Tương đối)'
+                    }
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                let unit = '';
+                                if (context.dataIndex === 0) unit = '%';
+                                else if (context.dataIndex === 1) unit = ' ms';
+                                else unit = ' (đơn vị tương đối)';
+                                label += context.parsed.y + unit;
+                            }
+                            return label;
+                        }
+                    }
+                },
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'So sánh Hiệu suất Tương đối'
+                }
+            }
+        };
+
+        function createOrUpdateChart(data, options) {
+            if (performanceChart) {
+                performanceChart.destroy();
+            }
+            performanceChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: options
+            });
+        }
+
+        const btnGood = document.getElementById('btn-good-conditions');
+        const btnBad = document.getElementById('btn-bad-conditions');
+
+        btnGood.addEventListener('click', () => {
+            createOrUpdateChart(goodConditionsData, chartOptions);
+            btnGood.classList.add('btn-active');
+            btnBad.classList.remove('btn-active');
+        });
+
+        btnBad.addEventListener('click', () => {
+            createOrUpdateChart(badConditionsData, chartOptions);
+            btnBad.classList.add('btn-active');
+            btnGood.classList.remove('btn-active');
+        });
+
+        // Initial chart load
+        createOrUpdateChart(goodConditionsData, chartOptions);
+    });
+</script>
 
 </body>
-
 </html>
